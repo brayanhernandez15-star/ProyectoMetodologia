@@ -1,0 +1,149 @@
+\documentclass[12pt,letterpaper]{article}
+\renewcommand{\rmdefault}{cmr}
+\renewcommand{\sfdefault}{cmss}
+\renewcommand{\ttdefault}{cmtt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,spanish]{babel}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,nomarginpar,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{array}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{tabularx} % Paquete para tablas ajustadas
+\usepackage{setspace}
+\doublespacing
+
+% Paquete de colores para las etiquetas de estado
+\usepackage{xcolor}
+\definecolor{colorIncluido}{RGB}{29, 78, 216}       % Azul claro / brillante
+\definecolor{colorRedactado}{RGB}{30, 58, 138}      % Azul oscuro
+\definecolor{colorParcial}{RGB}{107, 114, 128}      % Gris medio
+\definecolor{colorConstruccion}{RGB}{156, 163, 175} % Gris claro
+\definecolor{colorTextoGris}{RGB}{107, 114, 128}   % Gris notas de figuras/tablas
+
+% Configuración de Hyperref (Citas y enlaces en negro)
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=section,
+ colorlinks=true,
+ citecolor=black, % Citas bibliográficas en negro
+ linkcolor=black, % Enlaces internos en negro
+ urlcolor=black]  % Direcciones web en negro
+ {hyperref}
+\hypersetup{pdftitle={Titulo del proyecto sin tildes},
+ pdfauthor={Nombres del los autores sin tildes},
+ pdfsubject={tema de la investigacion},
+ pdfkeywords={palabras claves}}
+
+\makeatletter
+
+%% Los convertidores HTML no saben que es tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+% No generar la salida para \date
+\date{}
+% Utilizar el punto decimal, en vez de la acostumbrada coma del español.
+\decimalpoint
+
+% Etiqueta de figura y tabla a la izquierda seguida de punto.
+\usepackage[justification=justified, singlelinecheck=false, labelsep = period]{caption}
+
+% Centrar títulos de secciones
+\usepackage{sectsty}
+\sectionfont{\centering}
+
+% Empezar sección en pagina impar
+\let\stdsection\section
+\renewcommand\section{\cleardoublepage\stdsection}
+
+% Renombrar las secciones de acuerdo con NTC1486
+\addto{\captionsspanish}{\renewcommand*{\contentsname}{\centering CONTENIDO}}
+\addto{\captionsenglish}{\renewcommand*{\contentsname}{\centering CONTENIDO}}
+\addto{\captionsspanish}{\renewcommand*{\listfigurename}{\centering LISTA DE FIGURAS}}
+\addto{\captionsenglish}{\renewcommand*{\listfigurename}{\centering LISTA DE FIGURAS}}
+\addto{\captionsspanish}{\renewcommand*{\listtablename}{\centering LISTA DE TABLAS}}
+\addto{\captionsenglish}{\renewcommand*{\listtablename}{\centering LISTA DE TABLAS}}
+\addto{\captionsspanish}{\renewcommand*{\refname}{REFERENCIAS}}
+\addto{\captionsenglish}{\renewcommand*{\refname}{REFERENCIAS}}
+\addto{\captionsspanish}{ \renewcommand*{\tablename}{Tabla}}
+\addto{\captionsenglish}{ \renewcommand*{\tablename}{Tabla}}
+\addto{\captionsenglish}{ \renewcommand*{\figurename}{Figura}}
+
+% Crear un nuevo tipo de sección que sea centrado y sin numeración.
+\makeatletter
+\newcommand\@csection{\@startsection {section}{1}{\z@}%
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  {2.3ex \@plus.2ex}%
+  {\normalfont\Large\bfseries\centering}}
+\newcommand{\csection}[1]{%
+  \@csection*{#1}%
+}
+\makeatother
+
+% Centrar la palabra BIBLIOGRAFÍA, sin modificar la entrada en la TOC.
+\makeatletter
+    \renewenvironment{thebibliography}[1]{%
+    \csection{\refname} \bigskip
+    \list{\@biblabel{\@arabic\c@enumiv}}
+            {\settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+           \@openbib@code
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy
+    \clubpenalty4000\@clubpenalty \clubpenalty
+    \widowpenalty4000%
+    \sfcode`\.\@m}
+            {\def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist}
+\makeatother
+
+% Comando para generar la línea punteada con la etiqueta de estado a la derecha
+\newcommand{\tocitem}[3][0pt]{%
+  \noindent\hspace{#1}{#2}\ \dotfill\ {#3}\par\vspace{-2pt}%
+}
+
+% Marcador visual para secciones pendientes
+\newcommand{\enconstruccion}{%
+  \vspace{0.5em}%
+  \noindent\textcolor{colorConstruccion}{\textit{[En construcción: esta sección se redactará en las próximas sesiones del curso.]}}\par\vspace{1em}%
+}
+
+
+\begin{document}
+
+% ==========================================
+% PORTADA
+% ==========================================
+\input{secciones/portada}
+
+\singlespacing
+
+% ==========================================
+% CONTENIDO
+% ==========================================
+\input{secciones/introduccion}
+
+% ==========================================
+% CUERPO DE LA INVESTIGACIÓN
+% ==========================================
+\input{secciones/plant_prob}
+\input{secciones/justificacion}
+\input{secciones/objetivos}
+\input{secciones/alcance}
+\input{secciones/hipotesis}
+\input{secciones/variables}
+\input{secciones/m_referencial}
+\input{secciones/diseño}
+\input{secciones/resultado}
+\input{secciones/conclusiones}
+
+
+\input{secciones/ref&anexos}
+
+\end{document}
