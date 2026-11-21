@@ -1,10 +1,12 @@
-# ProyectoMetodologia
-# Integrantes:
-*Brayan Smith Hernandez Barrera
-*Paula Nicol González Maldonado
-*Andres Leonardo Herrera Agudelo
-#Idea Inicial
-Quiero analizar el impacto que tienen las aplicaciones bancarias Nequi,Daviplata,Bancolombia en la vida de los estudiantes de la UPTC y la importancia en su uso cotidiano.
+# Proyecto Metodología
 
-#Estado:infraestructura configurada, idea sin refinar aún.
+## Integrantes
+- Brayan Smith Hernández Barrera
+- Paula Nicol González Maldonado
+- Andrés Leonardo Herrera Agudelo
 
+## Idea inicial
+Analizar cuánto dependen los estudiantes de la UPTC, Sede Tunja, de las aplicaciones Nequi, DaviPlata y Bancolombia en sus actividades cotidianas (alimentación, transporte, fotocopias y pagos académicos), y cuánto se afectan esas actividades cuando las aplicaciones no están disponibles.
+
+## Estado
+Planteamiento, hipótesis, variables, marco referencial y diseño metodológico terminados. Pendientes: resultados y discusión, conclusiones y recomendaciones, y anexos.
